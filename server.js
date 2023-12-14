@@ -1,9 +1,16 @@
 const express = require('express');
+const { request } = require('http');
 
 const app = express();
-
+// endpoint to / path
 app.get('/',(request,response)=>{
-    response.send('<h1>Hello Darvin<h1>');
+    response.send('<h1>Notes Application<h1>');
+})
+
+// endponit to get the notes
+
+app.get('/notes',(request,response)=>{
+    response.json(notes);
 })
 
 // create a array of object
