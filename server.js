@@ -1,6 +1,10 @@
-// let import the http
-const http = require('http');
-const { json } = require('stream/consumers');
+const express = require('express');
+
+const app = express();
+
+app.get('/',(request,response)=>{
+    response.send('Hello Darvin');
+})
 
 // create a array of object
 
@@ -22,12 +26,7 @@ let notes = [
     }
 ]
 
-// let create the server 
-const app = http.createServer((request,response)=>{
-    response.statusCode = 200 ;
-    response.setHeader('content-type','JSON');
-    response.end(JSON.stringify(notes));
-});
+
 // create a port
 
 const PORT = 3001 ;
