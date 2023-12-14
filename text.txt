@@ -1,3 +1,0 @@
-hi 
-darvin
-this is a text file;
