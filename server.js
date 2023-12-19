@@ -1,16 +1,21 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const config = require('./utils/config');
+const cors = require('cors');
+const { info,error } = require('./utils/logger');
 
 // create a middleware
 app.use(express.json());
+app.use(cors());
 
 // connect a database using mongoose
-const url = `mongodb+srv://darvindheena98:darvin98@cluster0.triv4ws.mongodb.net/BackEnd`;
-console.log('connecting to mongodb');
-mongoose.connect(url)
+info('connecting to mongodb');
+
+
+mongoose.connect(config.MONGODB_URI)
     .then(()=>{
-        console.log('connected to mongodb')
+        info('connected to mongodb')
     })
     .catch((error)=>{
         console.log('error o connect a database',error);
@@ -34,10 +39,5 @@ app.get('/api/notes',(request,response)=>{
         })
 })
 
-const HOSTNAME = '127.0.0.1';
-const PORT = 3001 ;
-// let listen the server
 
-app.listen(PORT,()=>{
-    console.log(`server running at http://${HOSTNAME}:${PORT}`);
-});
+module.exports = app
